@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(img/3e56860b1d5ddadd4a88c0558c191792.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  color: grey;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.731);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button {
+  background-color: grey;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  transition-delay: 10ms;
+  background-color: white;
+  color: grey;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: grey;
+  color: white;
+  transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.back-button:hover {
+  transition-delay: 10ms;
+  background-color: white;
+  color: grey;
+}
+
+@media screen and (max-width: 426px) {
+  .container {
+    width: 300px;
+  }
+  body {
+    background-size: cover; 
+  }
+}

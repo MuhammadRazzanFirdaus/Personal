@@ -1,0 +1,247 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styling */
+body {
+  background: #f5f5dc;
+  font-family: Georgia, serif;
+  color: #000;
+  font-size: 14px;
+}
+
+a {
+  color: #800000;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+a:hover,
+a.selected {
+  color: #800000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.card {
+  margin-top: 55px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.4);
+  background-color: #800000;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 50px 50px rgba(255, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #f5f5dc;
+  color: #800000;
+  transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.back-button:hover {
+  transition-delay: 10ms;
+  background-color: #800000;
+  color: #f5f5dc;
+}
+
+/* Headings */
+h1,
+h2,
+h4,
+h5,
+h6 {
+  text-align: center;
+  color: #ccc;
+  text-shadow: #000 1px 1px 2px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 18px;
+}
+h2 {
+  font-size: 14px;
+}
+
+/* Timeline Container */
+#timeline {
+  width: 890px;
+  height: 900px;
+  overflow: hidden;
+  margin: 40px auto;
+  position: relative;
+  background: url("http://www.csslab.cl/ejemplos/timelinr/latest/images/dot.gif")
+    3px top repeat-y;
+}
+
+/* Dates List (Years) */
+#dates {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  text-align: right;
+}
+
+#dates li {
+  list-style: none;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  padding-right: 10px;
+  background: url("http://www.csslab.cl/ejemplos/timelinr/latest/images/biggerdot.png")
+    left center no-repeat;
+}
+
+#dates a {
+  line-height: 38px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+}
+
+#dates .selected {
+  font-size: 38px;
+}
+
+/* Issues Section */
+#issues {
+  height: auto; /* Agar menyesuaikan konten */
+  max-height: 900px; /* Bisa sesuaikan dengan kebutuhan */
+  float: left;
+  margin-left: 375px;
+}
+
+#issues li {
+  max-width: 900px;
+  width: 400px;
+  height: 600px;
+  list-style: none;
+  text-align: center;
+  color: #800000;
+}
+
+#issues li.selected img {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  transform: scale(1.1, 1.1);
+}
+
+#issues li img {
+  float: left;
+  max-width: 85%; /* Supaya gambar tidak terlalu besar */
+  height: auto;
+  margin: 10px 30px 10px 30px;
+  transition: all 2s ease-in-out;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  transform: scale(1.1, 1.1);
+}
+
+#issues li h1 {
+  color: #f5f5dc;
+  font-size: 48px;
+  text-align: center;
+  text-shadow: #000 1px 1px 2px;
+}
+
+#issues li p {
+  color: #f5f5dc;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 22px;
+  text-shadow: #000 1px 1px 2px;
+}
+
+/* Gradient Overlays */
+#grad_top,
+#grad_bottom {
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+}
+
+#grad_top {
+  top: 0;
+}
+
+#grad_bottom {
+  bottom: 0;
+}
+
+/* Navigation Buttons */
+#next,
+#prev {
+  position: absolute;
+  left: 63.5%;
+  font-size: 70px;
+  width: 38px;
+  height: 25px;
+  background-position: 0 -44px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  overflow: visible;
+}
+
+#next:hover,
+#prev:hover {
+  background-position: 0 0;
+}
+
+#next {
+  bottom: 0;
+  background-image: url("http://www.csslab.cl/ejemplos/timelinr/latest/images/next_v.png");
+}
+
+#prev {
+  top: 0;
+  background-image: url("http://www.csslab.cl/ejemplos/timelinr/latest/images/prev_v.png");
+}
+
+#next.disabled,
+#prev.disabled {
+  opacity: 0.2;
+}
+
+@media (max-width: 768px) {
+  #dates .selected {
+    font-size: 40px;
+  }
+
+  #dates li {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  #dates li {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
