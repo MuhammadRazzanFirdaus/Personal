@@ -1,43 +1,57 @@
+const display = document.getElementById('display');
+    
+// Menambahkan angka atau operator ke tampilan
 function appendToDisplay(value) {
-    let display = document.getElementById('display');
-    let currentValue = display.value;
-
-    // Jika layar kosong dan nilai yang akan ditambahkan adalah '0', tidak lakukan apa-apa
-    if (currentValue === '0' && value === '') {
-        return;
-    }
-
-    // Jika layar sudah berisi '0' dan nilai yang akan ditambahkan adalah '0', tidak lakukan apa-apa
-    if (currentValue === '0' && value === '0') {
-        return;
-    }
-
-    // Jika layar berisi '0' dan nilai yang akan ditambahkan bukan operator, ganti '0' dengan nilai baru
-    if (currentValue === '0' && !isOperator(value)) {
-        display.value = value;
-    } else {
-        display.value += value; // Tambahkan nilai ke display
-    }
+  let current = display.value;
+  if (current === '0' && value !== '.') {
+    display.value = value;
+  } else {
+    display.value += value;
+  }
 }
 
-function isOperator(value) {
-    return ['+', '-', '*', '/'].includes(value);
+// Menghapus seluruh tampilan
+function clearDisplay() { display.value = '0'; }
+
+// Menghapus karakter terakhir di tampilan
+function deleteLast() { display.value = display.value.slice(0, -1) || '0'; }
+
+// Menjalankan operasi matematika tertentu (seperti sin, cos, log, dll.)
+function operate(fn, checkNegative = false) {
+  let x = parseFloat(display.value);
+  if (isNaN(x) || (checkNegative && x < 0)) {
+    display.value = 'Error';
+  } else {
+    display.value = fn(x);
+  }
 }
 
-function clearDisplay() {
-    document.getElementById('display').value = '';
-}
+// Menetapkan nilai konstanta seperti π dan e
+function setConstant(val) { display.value = display.value === '0' ? val : display.value + val; }
 
-function deleteLast() {
-    let display = document.getElementById('display');
-    display.value = display.value.slice(0, -1);
-}
-
+// Menghitung ekspresi matematika yang diketik pengguna
 function calculate() {
-    let display = document.getElementById('display');
-    try {
-        display.value = eval(display.value);
-    } catch (e) {
-        display.value = 'Error';
-    }
+  try {
+    let expr = display.value.replace(/mod/g, '%').replace(/(\d+)\^(\d+)/g, 'Math.pow($1,$2)');
+    let result = eval(expr);
+    display.value = isNaN(result) ? 'Error' : result;
+  } catch (e) {
+    display.value = 'Error';
+  }
 }
+
+// Menangani input keyboard
+document.addEventListener('keydown', function(e) {
+  const validKeys = '0123456789+-*/().%^';
+  if (validKeys.includes(e.key)) {
+    appendToDisplay(e.key);
+  } else if (e.key === 'Enter') {
+    calculate();
+  } else if (e.key === 'Backspace') {
+    deleteLast();
+  } else if (e.key === 'Escape') {
+    clearDisplay();
+  } else {
+    e.preventDefault();
+  }
+});
